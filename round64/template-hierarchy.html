@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; font-family: Arial; max-width: 500px;">
+        <h2 style="color: #21759b;">📚 WordPress Template Hierarchy</h2>
+        <p>The template hierarchy determines which template file WordPress uses to display different types of content.</p>
+        <ul>
+          <li><strong>Front Page:</strong> <code>front-page.php</code> → <code>home.php</code> → <code>index.php</code></li>
+          <li><strong>Single Post:</strong> <code>single-{post-type}.php</code> → <code>single.php</code> → <code>singular.php</code> → <code>index.php</code></li>
+          <li><strong>Page:</strong> <code>page-{slug}.php</code> → <code>page-{id}.php</code> → <code>page.php</code> → <code>singular.php</code> → <code>index.php</code></li>
+          <li><strong>Category Archive:</strong> <code>category-{slug}.php</code> → <code>category.php</code> → <code>archive.php</code> → <code>index.php</code></li>
+          <li><strong>Tag Archive:</strong> <code>tag-{slug}.php</code> → <code>tag.php</code> → <code>archive.php</code> → <code>index.php</code></li>
+          <li><strong>Author Archive:</strong> <code>author-{nicename}.php</code> → <code>author.php</code> → <code>archive.php</code> → <code>index.php</code></li>
+          <li><strong>Date Archive:</strong> <code>date.php</code> → <code>archive.php</code> → <code>index.php</code></li>
+          <li><strong>Search:</strong> <code>search.php</code> → <code>index.php</code></li>
+          <li><strong>404 Error:</strong> <code>404.php</code> → <code>index.php</code></li>
+        </ul>
+        <p style="font-size: 0.9em; color: #666;">Always ends with <code>index.php</code> if no specific template is found.</p>
+      </div>
+      
+</body>
+</html>

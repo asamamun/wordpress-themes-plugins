@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+    <div class="card my-4">
+  <div class="card-header bg-info text-white">
+    ⚙️ WordPress Settings API – Explained
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">📘 What Is the Settings API?</h5>
+    <p class="card-text">
+      The <strong>Settings API</strong> is a framework in WordPress that allows developers to create settings pages, sections, and fields in a secure and standardized way. It handles data validation, saving, and retrieval automatically.
+    </p>
+
+    <h5 class="card-title">🔑 Core Functions</h5>
+    <ul>
+      <li><code>register_setting($group, $option_name)</code> – Registers a setting with a group.</li>
+      <li><code>add_settings_section($id, $title, $callback, $page)</code> – Adds a section to a settings page.</li>
+      <li><code>add_settings_field($id, $title, $callback, $page, $section)</code> – Adds a field to a section.</li>
+      <li><code>settings_fields($group)</code> – Outputs hidden fields for security and group association.</li>
+      <li><code>do_settings_sections($page)</code> – Outputs all sections and fields for a page.</li>
+    </ul>
+
+    <h5 class="card-title">🧪 How It Works in Your Plugin</h5>
+    <ol>
+      <li><strong>Register the setting:</strong><br>
+        <code>register_setting('tct_settings_group', 'tct_options');</code><br>
+        This tells WordPress to save the <code>tct_options</code> array when submitted via the <code>tct_settings_group</code> form.
+      </li>
+      <li><strong>Output the form:</strong><br>
+        <code>&lt;form method="post" action="options.php"&gt;</code><br>
+        <code>&lt;?php settings_fields('tct_settings_group'); ?&gt;</code><br>
+        This sets up the form with the correct security fields and submission target.
+      </li>
+      <li><strong>Save and retrieve:</strong><br>
+        WordPress automatically saves the data to the database.<br>
+        Use <code>get_option('tct_options')</code> to retrieve it in your theme or plugin.
+      </li>
+    </ol>
+
+    <h5 class="card-title">💡 Why Use the Settings API?</h5>
+    <ul>
+      <li>✅ Built-in security (nonces, sanitization)</li>
+      <li>✅ Consistent admin UI</li>
+      <li>✅ Automatic saving and retrieval</li>
+      <li>✅ Scalable for complex settings pages</li>
+    </ul>
+
+    <h5 class="card-title">🛠️ Optional: Full Section & Field Example</h5>
+    <pre><code>// Register setting
+register_setting('my_group', 'my_option');
+
+// Add section
+add_settings_section('my_section', 'My Section', null, 'my_page');
+
+// Add field
+add_settings_field('my_field', 'My Field', 'render_my_field', 'my_page', 'my_section');
+
+// Render field
+function render_my_field() {
+    $value = get_option('my_option');
+    echo '&lt;input type="text" name="my_option" value="' . esc_attr($value) . '" /&gt;';
+}
+</code></pre>
+
+    <p class="card-text">
+      This modular approach is ideal for large settings pages with many fields.
+    </p>
+  </div>
+</div>
+</div>
+</body>
+</html>
