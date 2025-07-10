@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Ticker Example</title>
+    <style>
+        body {
+            margin: 0;
+            padding-bottom: 40px; /* Make space for the ticker */
+            font-family: Arial, sans-serif;
+        }
+        
+        .news-ticker {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            overflow: hidden;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+        
+        .ticker-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .ticker-label {
+            background-color: #ff5722;
+            color: white;
+            padding: 5px 15px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        
+        .ticker-content {
+            flex-grow: 1;
+            overflow: hidden;
+        }
+        
+        .ticker-list {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 20px;
+            margin: 0;
+            animation: ticker-scroll 30s linear infinite;
+        }
+        
+        .ticker-list li {
+            display: inline;
+            margin-right: 40px;
+            position: relative;
+        }
+        
+        .ticker-list li:after {
+            content: "•";
+            position: absolute;
+            right: -25px;
+            color: #ff5722;
+        }
+        
+        .ticker-list li:last-child:after {
+            display: none;
+        }
+        
+        @keyframes ticker-scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Your page content here -->
+    <div style="padding: 20px;">
+        <h1>Your Website Content</h1>
+        <p>This is where your main content would go. Scroll down to see that the news ticker stays fixed at the bottom.</p>
+        <!-- Add more content to make the page scrollable -->
+    </div>
+    
+    <!-- News Ticker -->
+    <div class="news-ticker">
+        <div class="ticker-container">
+            <div class="ticker-label">LATEST NEWS</div>
+            <div class="ticker-content">
+                <ul class="ticker-list">
+                    <li>Breaking: New technology breakthrough announced today</li>
+                    <li>Market update: Stocks reach all-time high</li>
+                    <li>Weather alert: Severe storms expected this weekend</li>
+                    <li>Sports: Team wins championship after dramatic final</li>
+                    <li>Health: New study reveals benefits of daily exercise</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Optional JavaScript to make the ticker pause on hover
+        document.addEventListener('DOMContentLoaded', function() {
+            const ticker = document.querySelector('.ticker-list');
+            
+            if (ticker) {
+                ticker.addEventListener('mouseenter', function() {
+                    this.style.animationPlayState = 'paused';
+                });
+                
+                ticker.addEventListener('mouseleave', function() {
+                    this.style.animationPlayState = 'running';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
