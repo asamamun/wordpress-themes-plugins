@@ -1,0 +1,79 @@
+/* WP Test CRUD Admin Styles */
+
+.wrap {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.wp-list-table {
+    border-collapse: collapse;
+}
+
+.wp-list-table th, .wp-list-table td {
+    text-align: left;
+    padding: 12px;
+}
+
+.wp-list-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.wp-list-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.wp-list-table tr:hover {
+    background-color: #ddd;
+}
+
+.page-title-action {
+    background-color: #4CAF50 !important;
+    color: white !important;
+    border-color: #4CAF50 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transition: background-color 0.3s ease;
+}
+
+.page-title-action:hover {
+    background-color: #45a049 !important;
+}
+
+.form-table {
+    width: 100%;
+}
+
+.form-table th, .form-table td {
+    padding: 15px;
+}
+
+.form-table input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit .button-primary {
+    background-color: #4CAF50 !important;
+    border-color: #4CAF50 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+.submit .button-primary:hover {
+    background-color: #45a049 !important;
+}
+
+.submit .button-secondary {
+    background-color: #f44336 !important;
+    border-color: #f44336 !important;
+    color: white !important;
+}
+
+.submit .button-secondary:hover {
+    background-color: #d32f2f !important;
+}
