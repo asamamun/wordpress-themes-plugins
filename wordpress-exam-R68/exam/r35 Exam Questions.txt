@@ -1,0 +1,16 @@
+CI and WP Questions R35
+_______________________
+rss feed
+post and post format
+category and tag in wp
+commonly used fx in wp
+helper and plugin diff
+hooks is wp
+features of wp
+theme in wp
+dashboard in wp
+user roles in wp
+
+
+
+

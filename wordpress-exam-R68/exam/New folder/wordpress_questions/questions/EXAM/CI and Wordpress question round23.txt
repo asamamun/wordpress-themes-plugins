@@ -1,0 +1,20 @@
+discuss _remap function
+difference between helper and plugin.
+what is pagination.
+what is bottleneck.Types of bottleneck.
+define web service.types of web service: RESTful, RPC
+User role in wordpress.
+Flash data in CI.
+How security can be implemented in CI?
+
+What is MVC?
+
+discuss features of wordpress.
+What is post? Types/format of post.
+Define theme.
+Quickpress in wordpress.
+define library.Why use library.
+Dashboard in wordpress.
+
+
+
