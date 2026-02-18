@@ -1,0 +1,60 @@
+How to create custom post type
+1. add this to your themes functions.php
+<?php
+// custom post "notice"
+function wdpf68_post_notice() {
+    register_post_type('notice', array(
+            'title' => 'Notice',
+            'public' => true,
+            'taxonomies'    => array('category', 'post_tag'),
+            //featured image support
+            'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments', 'revisions', 'trackbacks', 'author', 'page-attributes', 'post-formats', 'custom-fields'),
+            'labels' => array(
+                'name' => 'Notice 123',
+                'add_new' => 'Add New Notice 4',
+                'add_new_item' => 'Add New Notice 5',
+                'edit_item' => 'Edit Notice 6',
+                'new_item' => 'New Notice 7',
+                'view_item' => 'View Notice',
+                'search_items' => 'Search Notice',
+                'not_found' => 'No Notice Found',
+                'not_found_in_trash' => 'No Notice Found in Trash',
+                'all_items' => 'All Notice 8',
+                'archives' => 'Notice Archives',
+                'insert_into_item' => 'Insert into Notice',
+                'uploaded_to_this_item' => 'Uploaded to this Notice',
+                'featured_image' => 'Featured Image',
+                'set_featured_image' => 'Set Featured Image',
+                'remove_featured_image' => 'Remove Featured Image',
+                'use_featured_image' => 'Use as Featured Image',
+                'menu_name' => 'Notice',
+                'filter_items_list' => 'Filter Notice List',
+                'items_list_navigation' => 'Notice List Navigation',
+                'items_list' => 'Notice List',
+)));
+}
+//action hook, works in init
+add_action('init', 'wdpf68_post_notice');
+
+2. add posts in notice menu
+3 . create a page named notices
+4. add the page in main menu
+5. now find the page's ID using Reveal IDs plugin(notice page id is 301)
+6. create a file named page-301.php
+add custom query in that page to show notice posts
+<?php 
+    $args =  array( 
+    'posts_per_page' => '5', 
+    'post_type'      => 'notice',
+); 
+$myNotices = new WP_Query( $args );
+?>
+           <?php if ($myNotices->have_posts() ) : ?>
+
+             <?php /* Start the Loop */ ?>
+             <?php while ( $myNotices->have_posts() ) : $myNotices->the_post(); ?>
+//show title, excerpt, thumbnail, author name, date, time etc
+<?php endwhile; ?>
+
+
+
