@@ -1,0 +1,3 @@
+if you need custom post type, add post-notice.php in you theme's functions.php file.
+
+if you need custom taxonomy mood in your post, add post-taxonomy.php in your functions.php file.

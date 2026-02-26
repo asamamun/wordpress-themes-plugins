@@ -1,0 +1,1 @@
+this plugin will create custom post type "product" with custom meta box for product information.

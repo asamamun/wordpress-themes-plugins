@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <?php wp_head(); ?>
+</head>
+<body>
+    <div class="container">
+        <?php get_template_part(slug: 'includes/carousel'); ?>
+    <h1>welcome to index</h1>
+    <h2>you can get any option from option table using get_option('option_name')</h2>
+    <?php
+    // get an option
+/* $option = get_option('idborg_custom_option');
+echo $option['round'] . "<br>";
+echo $option['batch'] . "<br>";
+echo $option['tsp'] . "<br>";
+echo $option['shift'] . "<br>";
+echo "<hr>";
+$sitename = get_option('blogname');
+echo $sitename; */
+    ?>
+    <hr>
+    <?php $value_from_options = get_option('prowp_options'); ?>
+    <pre>
+    <?php print_r($value_from_options); ?>
+    </pre>
+    <h1>we will show latest 5 post with 2 custom meta info if available: prowp_product_type and prowp_price</h1>
+    <?php
+    $args = array(
+        'posts_per_page' => 5,
+        'meta_query' => array(
+            'relation' => 'OR',
+            array(
+                'key' => '_prowp_type',
+                'compare' => 'EXISTS'
+            ),
+            array(
+                'key' => '_prowp_price',
+                'compare' => 'EXISTS'
+            )
+        ),
+        'orderby' => array(
+            '_prowp_type' => 'DESC',
+            'date' => 'DESC'
+        )
+    );
+    $query = new WP_Query($args);
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            echo '<h2>' . get_the_title() . '</h2>';
+            echo '<p>Product Type: ' . get_post_meta(get_the_ID(), '_prowp_type', true) . '</p>';
+            echo '<p>Price: ' . get_post_meta(get_the_ID(), '_prowp_price', true) . '</p>';
+        }
+    } else {
+        echo '<p>No posts found.</p>';
+    }
+    wp_reset_postdata();
+    ?>
+    </div>
+    <?php wp_footer(); ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
